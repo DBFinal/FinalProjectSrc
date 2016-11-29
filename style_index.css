@@ -1,0 +1,75 @@
+html {
+	position:relative;
+	min-height:100%;
+}
+
+body {
+	margin-bottom: 60px;
+}
+
+h1 {
+	font-family: Poiret One;
+}
+
+h2, h3, h4, h5, h6 {
+	font-family: arial;
+}
+
+.navbar { /* Remove the navbar's default margin-bottom and rounded borders */
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+footer { /* Add a gray background color and some padding to the footer */
+	background-color: #231942;
+	color: #907AD6;
+	padding: 24px;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+
+.blue {
+	color: #B1DDF1;
+}
+
+.blue-basin {
+	background-color: #5E548E;
+	color: #FFFFFF;
+	padding-bottom: 24px;
+}
+
+.jumbotron {
+	background-color: #231942;
+	margin-bottom: 0;
+	padding: 24px;
+}
+
+.jumbotron img {
+	margin: auto;
+}
+
+.nav-glyph-color {
+	color: #B1DDF1;
+}
+
+.carousel-inner img {
+	width: 100%;
+	margin: auto;
+	min-height: 200px;
+}
+
+a.list-group-item {
+	color: #337ab7;
+}
+
+a.list-group-item:hover {
+	text-decoration: underline;
+	color: #23527c;
+}
+
+@media (max-width: 600px) { /* Hide the carousel text when the screen is less than 600 pixels wide */
+	.carousel-caption {
+		display: none;
+	}
+}
