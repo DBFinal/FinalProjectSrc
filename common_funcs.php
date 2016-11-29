@@ -28,7 +28,7 @@ function standard_nav()
 	$cursor->add_item("Home","/c9/finalprojectsrc/index.php","home");
 	$cursor->add_item("Doctors","/c9/finalprojectsrc/doctors.php","heart");
 	$cursor->add_item("Pharmacists","/c9/finalprojectsrc/pharmacists.php","cloud");
-	$cursor->add_item("About Us","/c9/finalprojectsrc/about.php","info-sign");
+	$cursor->add_item("About Us","/c9/finalprojectsrc/aboutUs.php","info-sign");
 
 	if (!isset($_SESSION["loggedin"]))
 	{
@@ -37,12 +37,12 @@ function standard_nav()
 	
 	if ($_SESSION["loggedin"])
 	{
-		$rside = $cursor->add_item(ucfirst($_SESSION["loguser"]),"/control_panel.php","user");
+		$rside = $cursor->add_item(ucfirst($_SESSION["loguser"]),"","user");
 		$cursor->set_right_side($rside);
 	}
 	else
 	{
-		$rside = $cursor->add_item("Login","/login.php","log-in");
+		$rside = $cursor->add_item("Login","/c9/finalprojectsrc/login.php","log-in");
 		$cursor->set_right_side($rside);
 	}
 
@@ -55,6 +55,82 @@ function standard_title($title)
 	echo "<!--Title-->\r\n<div class=\"container text-center\">\r\n<h1>" . $title . "</h1>\r\n</div>\r\n\r\n";
 }
 
+function initialize_session_vars()
+{
+	if (!isset($_SESSION["loggedin"]))
+	{
+		$_SESSION["loggedin"] = false;
+	}
+}
+
+function kick_out_anons()
+{
+	if (isset($_SESSION["loggedin"]))
+	{
+		if (!$_SESSION["loggedin"])
+		{
+			header("Location:/login.php?e=0");
+		}
+	}
+	else
+	{
+		header("Location:/login.php?e=0");
+	}
+}
+
+function get_user_name()
+{
+	$user = "anonymous";
+	
+	if (isset($_SESSION["loguser"]))
+	{
+		$user = $_SESSION["loguser"];
+	}
+	
+	return $user;
+}
+
+function get_user_id()
+{
+	$id = -1;
+	
+	if (isset($_SESSION["logid"]))
+	{
+		$id = intval($_SESSION["logid"]);
+	}
+	
+	return $id;
+}
+
+function doctor_privilege()
+{
+	$doctor = false;
+	
+	if (isset($_SESSION["logisdoctor"]))
+	{
+		if ($_SESSION["logisdoctor"] == 1)
+		{
+			$doctor = true;
+		}
+	}
+	
+	return $doctor;
+}
+
+function pharmacist_privilege()
+{
+	$pharmacist = false;
+	
+	if (isset($_SESSION["logispharmacist"]))
+	{
+		if ($_SESSION["logispharmacist"] == 1)
+		{
+			$pharmacist = true;
+		}
+	}
+	
+	return $pharmacist;
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //

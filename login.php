@@ -1,7 +1,6 @@
 <?php
 
-require("page_commons.php");
-require("page_accounts.php");
+require("common_funcs.php");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -21,7 +20,7 @@ class login implements exportable
 	private function ex_form_field($name, $type, $length)
 	{
 		$out = "<div class=\"form-group\">\r\n<div class=\"row\">\r\n<div class=\"col-sm-4\">\r\n";
-		$out .= "<label for=\"" . $name . "\">" . ucfirst($name) . ":</label>\r\n";
+		$out .= "<label for=\"" . $name . "\">" . $name . ":</label>\r\n";
 		$out .= "<input type=\"" . $type . "\" class=\"form-control\" name=\"" . $name . "\" ";
 		$out .= "maxlength=\"" . $length . "\" placeholder=\"Enter " . $name . "\">\r\n";
 		$out .= "</div>\r\n</div>\r\n</div>\r\n";
@@ -40,7 +39,7 @@ class login implements exportable
 		$out = "<!--Login Form-->\r\n";
 		$out .= "<div class=\"container\">\r\n";
 		$out .= $error_report;
-		$out .= "<form method=\"POST\" action=\"/login.php\">\r\n";
+		$out .= "<form method=\"POST\" action=\"/c9/finalprojectsrc/login.php\">\r\n";
 		$out .= $this->ex_form_field("user","text",128);
 		$out .= $this->ex_form_field("password","password",128);
 		$out .= "<button type=\"submit\" class=\"btn btn-default\">Submit</button>\r\n";
@@ -57,7 +56,7 @@ class login implements exportable
 
 initialize_session_vars();
 
-$mysqli = new mysqli($bddb_ip,$bddb_user,$bddb_pass,$bddb_base);
+$mysqli = new mysqli($db_ip,$db_user,$db_pass,$db_base);
 if ($mysqli->connect_errno) {exit("Cannot connect to MySQL!");}
 
 $error = "";
@@ -69,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["loggedin"] == false)
 	$username = strtolower(fixinput($_POST["user"]));
 	$password = $_POST["password"];
 	
-	$sql = "SELECT id, password, is_admin FROM login WHERE username = '" . $username . "';";
+	$sql = "SELECT id, password, doctor FROM login WHERE username = '" . $username . "';";
 	$res = $mysqli->query($sql);
 	
 	if ($res != false && $res->num_rows > 0)
@@ -81,7 +80,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["loggedin"] == false)
 			$_SESSION["loggedin"] = true;
 			$_SESSION["loguser"] = $username;
 			$_SESSION["logid"] = $res_set["id"];
-			$_SESSION["logisadmin"] = $res_set["is_admin"];
+			$_SESSION["logisdoctor"] = $res_set["doctor"];
+			$_SESSION["logispharmacist"] = !$res_set["doctor"]; //If were not a doctor, then we are a pharmacist.
 		}
 		else
 		{
@@ -114,27 +114,24 @@ if (isset($_GET["e"]))
 
 if ($_SESSION["loggedin"])
 {
-	header("Location:/index.php");
+	header("Location:/c9/finalprojectsrc/index.php");
 }
 
-$cursor = new page_header("BusterDash");
-//$cursor->add_stylesheet("style_index.css");
-$cursor->add_stylesheet("https://fonts.googleapis.com/css?family=Bungee");
+$cursor = new page_header("Cloud9 Pharma");
+$cursor->add_stylesheet("style_index.css");
+$cursor->add_stylesheet("https://fonts.googleapis.com/css?family=Poiret+One");
 $cursor->export();
-unset($cursor);
 
-$cursor = new jumbotron("img/busterdash_large.png");
+$cursor = new jumbotron("img/cloud9.png");
 $cursor->export();
-unset($cursor);
 
 standard_nav();
 standard_title("Login");
 
 $cursor = new login($error);
 $cursor->export();
-unset($cursor);
 
-standard_footer();
-$mysqli->close();
+$cursor = new page_footer("Cloud9 Pharma");
+$cursor->export();
 
 ?>

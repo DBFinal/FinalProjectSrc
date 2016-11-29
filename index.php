@@ -15,7 +15,7 @@ standard_nav();
 ?>
 
 <div class="blue-basin container-fluid text-center">
-<h1><span class="glyphicon glyphicon-plus blue"></span> Welcome to Cloud 9 Pharmacy! <span class="glyphicon glyphicon-plus blue"></span></h1>
+<h1><span class="glyphicon glyphicon-plus blue"></span> Welcome to Cloud9 Pharmacy! <span class="glyphicon glyphicon-plus blue"></span></h1>
 </div>
 
 <?php
