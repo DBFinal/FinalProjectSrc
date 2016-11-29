@@ -134,4 +134,6 @@ $cursor->export();
 $cursor = new page_footer("Cloud9 Pharma");
 $cursor->export();
 
+mysqli->close();
+
 ?>

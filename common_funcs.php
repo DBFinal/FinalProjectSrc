@@ -7,7 +7,7 @@ interface exportable
 	function export();
 }
 
-$db_ip = "127.0.0.1";
+$db_ip = "localhost";
 $db_user = "root";
 $db_pass = "changeme";
 $db_base = "cloud9";
