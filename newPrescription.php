@@ -2,6 +2,9 @@
 
 require("common_funcs.php");
 
+//Deploy this when we're almost done with the project. This is the permissions system.
+//kick_out_anons(); //You must be logged in to see this page.
+
 $cursor = new page_header("Cloud9 Pharma");
 $cursor->add_stylesheet("style_index.css");
 $cursor->add_stylesheet("https://fonts.googleapis.com/css?family=Poiret+One");
@@ -75,7 +78,7 @@ if (isset($_POST["submit"]))
 </div>
 </div>
 </form>
-<img src="http://www.clipartkid.com/images/313/pill-bottle-clipart-cliparts-co-ER73Sa-clipart.png" alt="PILLS" style="width:112px; height:112px;">
+<img src="img/pill.png" alt="PILLS" style="width:112px;">
 </div>
 
 <?php

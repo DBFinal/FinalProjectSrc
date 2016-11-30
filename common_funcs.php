@@ -37,7 +37,7 @@ function standard_nav()
 	
 	if ($_SESSION["loggedin"])
 	{
-		$rside = $cursor->add_item(ucfirst($_SESSION["loguser"]),"","user");
+		$rside = $cursor->add_item($_SESSION["loguser"],"","user");
 		$cursor->set_right_side($rside);
 	}
 	else
@@ -69,12 +69,12 @@ function kick_out_anons()
 	{
 		if (!$_SESSION["loggedin"])
 		{
-			header("Location:/login.php?e=0");
+			header("Location:/c9/finalprojectsrc/login.php?e=0");
 		}
 	}
 	else
 	{
-		header("Location:/login.php?e=0");
+		header("Location:/c9/finalprojectsrc/login.php?e=0");
 	}
 }
 

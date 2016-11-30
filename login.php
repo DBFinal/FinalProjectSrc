@@ -20,7 +20,7 @@ class login implements exportable
 	private function ex_form_field($name, $type, $length)
 	{
 		$out = "<div class=\"form-group\">\r\n<div class=\"row\">\r\n<div class=\"col-sm-4\">\r\n";
-		$out .= "<label for=\"" . $name . "\">" . $name . ":</label>\r\n";
+		$out .= "<label for=\"" . $name . "\">" . ucfirst($name) . ":</label>\r\n";
 		$out .= "<input type=\"" . $type . "\" class=\"form-control\" name=\"" . $name . "\" ";
 		$out .= "maxlength=\"" . $length . "\" placeholder=\"Enter " . $name . "\">\r\n";
 		$out .= "</div>\r\n</div>\r\n</div>\r\n";
@@ -134,6 +134,6 @@ $cursor->export();
 $cursor = new page_footer("Cloud9 Pharma");
 $cursor->export();
 
-mysqli->close();
+$mysqli->close();
 
 ?>
