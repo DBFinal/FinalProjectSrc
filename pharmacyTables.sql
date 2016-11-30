@@ -134,3 +134,8 @@ insert into Medications Values(null,'Viagra',50);
 insert into Medications Values(null,'Cialis',20);
 insert into Medications Values(null,'Tums',120);
 insert into Medications Values(null,'Tylenol',45);
+
+insert into Prescriptions Values(null, 1, 1, null, 1, 2, 25, 'Take one before bed');
+
+insert into Insurance Values(null, 'Geico', '14th St W', 'Fargo', 'ND', 58102, 7017538475);
+insert into Insurance Values(null, 'Blue Cross', '23rd St E', 'Fargo', 'ND', 58102, 7015436667);
