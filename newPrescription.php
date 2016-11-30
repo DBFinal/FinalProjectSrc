@@ -12,76 +12,76 @@ $cursor->export();
 
 standard_nav();
 
+function result_message($title, $msg, $type)
+{
+	echo "<div class=\"alert alert-" . $type . " alert-dismissible\">\r\n";
+	echo "<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>";
+	echo "<strong>" . ucfirst($title) . "!</strong> " . $msg . "\r\n";
+	echo "</div>\r\n";
+}
+
+echo "<div class=\"container\">\r\n";
+echo "<h1>Prescription</h1>\r\n";
+
+if (isset($_POST["submit"]))
+{
+	result_message("success","Fake success message here. ;)","info");
+}
+
 ?>
-<style> 
 
-label.customer-labels{
-	margin: 8px 5px;
-	
-}
-td.labels{
-
-width:20px;}
-th.customer-Header{
-	font-size:27px;
-	width:50px;
-}
-
-img{
-	float:right;
-}
-
-
-</style>
-<form>
-<table>
-<tr>
-<th class="customer-Header"><u>Prescription</u></th>
-</tr>
-<tr>
-<td class="labels">
-<label for="fname" class="customer-labels">Customer ID:</label></td><td >
-  <input  type="number" id="fname" name="fname" required> 
-</td>
-</tr>
-<tr>
-<td class="labels">
-<label for="medId" class="customer-labels">Medication ID:</label></td><td>
-  <input  type="number" id="medId" name="medId" required> 
-</td>
-</tr>
-<tr>
-<td class="labels">
-<label for="pCount" class="customer-labels">Pill Count:</label></td><td>
-  <input  type="number" id="pCount" name="pCount" required> 
-</td>
-</tr>
-<tr>
-<td class="labels">
-<label for="refill" class="customer-labels">How many refills?</label></td><td>
-  <input  type="number" id="refill" name="refill" required> 
-</td>
-</tr>
-<tr>
-<td class="labels">
-<label for="instruct" class="customer-labels">Instructions</label></td><td>
-  <input  type="text" id="instruct" name="instruct" required pattern="[a-zA-Z0-9\s]+"> 
-</td>
-</tr>
-<tr>
-<td class="labels">
-<label for="doctor" class="customer-labels">Verify by Doctor ID:</label></td><td>
-  <input  type="number" id="doctor" name="doctor" required> 
-</td>
-</tr>
- </table>
- <input type="submit">
-<img src=" http://www.clipartkid.com/images/313/pill-bottle-clipart-cliparts-co-ER73Sa-clipart.png" alt="PILLS" style="width:112px;height:112px;">
+<div class="well">
+<form class="form-horizontal" method="POST" action="newPrescription.php">
+<div class="form-group">
+<label class="control-label col-sm-3" for="customerid">Customer ID:</label>
+<div class="col-sm-9">
+<input type="number" class="form-control" id="customerid" name="customerid" required />
+</div>
+</div>
+<div class="form-group">
+<label class="control-label col-sm-3" for="medicationid">Medication ID:</label>
+<div class="col-sm-9">
+<input type="number" class="form-control" id="medicationid" name="medicationid" required />
+</div>
+</div>
+<div class="form-group">
+<label class="control-label col-sm-3" for="pillcount">Pill Count:</label>
+<div class="col-sm-9">
+<input type="number" class="form-control" id="pillcount" name="pillcount" required />
+</div>
+</div>
+<div class="form-group">
+<label class="control-label col-sm-3" for="refill">How many refills?</label>
+<div class="col-sm-9">
+<input type="number" class="form-control" id="refill" name="refill" required />
+</div>
+</div>
+<div class="form-group">
+<label class="control-label col-sm-3" for="instructions">Instructions:</label>
+<div class="col-sm-9">
+<input type="text" class="form-control" id="instructions" name="instructions" pattern="[a-zA-Z0-9\s]+" required />
+</div>
+</div>
+<div class="form-group">
+<label class="control-label col-sm-3" for="doctor">Verify by Doctor ID:</label>
+<div class="col-sm-9">
+<input type="number" class="form-control" id="doctor" name="doctor" required />
+</div>
+</div>
+<div class="form-group">
+<label class="control-label col-sm-3" for="submit">&nbsp;</label>
+<div class="col-sm-9">
+<button type="submit" id="submit" name="submit" class="btn btn-primary">Create Prescription</button>
+</div>
+</div>
 </form>
-<!-- Need to add new page or success message then do logic for adding to database next. -->
-
+<img src="http://www.clipartkid.com/images/313/pill-bottle-clipart-cliparts-co-ER73Sa-clipart.png" alt="PILLS" style="width:112px; height:112px;">
+</div>
 
 <?php
+
+echo "</div>\r\n";
+
 $cursor = new page_footer("Cloud 9 Pharma");
 $cursor->export();
 

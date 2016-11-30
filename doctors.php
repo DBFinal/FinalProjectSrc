@@ -12,45 +12,24 @@ $cursor->export();
 
 standard_nav();
 
-?>
-<style>
-.button1 {
-    background-color: #5E548E;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 40px 2px;
-    cursor: pointer;
-	margin-left:220px;
-	float:left
+function decisions()
+{
+	echo "<br />\r\n";
+	echo "<div class=\"container\">\r\n";
+	echo "<div class=\"row\">\r\n";
+	echo "<div class=\"col-sm-6\">\r\n";
+	echo "<a href=\"newPrescription.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Create New Prescription</a>\r\n";
+	echo "</div>\r\n";
+	echo "<div class=\"col-sm-6\">\r\n";
+	echo "<a href=\"showCurrent.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Show Current Prescriptions</a>\r\n";
+	echo "</div>\r\n</div>\r\n</div>\r\n";
 }
-.button2 {
-    background-color: #5E548E;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 40px 2px;
-    cursor: pointer;
-	margin-right:220px;
-	float:right
-}
-</style>
 
-<form action="newPrescription.php">
-<button class="button1">Create New Prescription</button>
-</form>
-<form action="showCurrent.php">
-<button class="button2">Show Current Prescriptions</button>
-</form>
-<?php
+//if (doctor_privilege()) //Deploy this when we're almost done with the project. This is the permissions system.
+//{
+decisions();
+//}
+
 $cursor = new page_footer("Cloud 9 Pharma");
 $cursor->export();
 
