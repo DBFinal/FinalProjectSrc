@@ -135,6 +135,7 @@ insert into Medications Values(null,'Cialis',20);
 insert into Medications Values(null,'Tums',120);
 insert into Medications Values(null,'Tylenol',45);
 
+<<<<<<< HEAD
 insert into Medication_Relation Values(1,3);
 insert into Medication_Relation Values(2,3);
 insert into Medication_Relation Values(4,9);
@@ -143,3 +144,9 @@ select * from Medication_Relation,Medications,Medication_Type where Medication_R
 select typeName from Medication_Relation,Medications,Medication_Type where Medication_Relation.medId = Medications.medId and Medication_Relation.medTypeId = Medication_Type.medTypeId ;
 insert into Prescriptions values(null,2,1,2,1,3,20,'Take after meal');insert into Prescriptions values(null,2,1,2,1,3,20,'Take after meal');
 
+=======
+insert into Prescriptions Values(null, 1, 1, null, 1, 2, 25, 'Take one before bed');
+
+insert into Insurance Values(null, 'Geico', '14th St W', 'Fargo', 'ND', 58102, 7017538475);
+insert into Insurance Values(null, 'Blue Cross', '23rd St E', 'Fargo', 'ND', 58102, 7015436667);
+>>>>>>> d1d8a1ac69b17ee4c9a51720f6c5cb94d7b2bc5e

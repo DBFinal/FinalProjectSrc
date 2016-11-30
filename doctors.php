@@ -43,16 +43,13 @@ standard_nav();
 	float:right
 }
 </style>
-<html>
-<body>
+
 <form action="newPrescription.php">
 <button class="button1">Create New Prescription</button>
 </form>
 <form action="showCurrent.php">
 <button class="button2">Show Current Prescriptions</button>
 </form>
-</body>
-</html>
 <?php
 $cursor = new page_footer("Cloud 9 Pharma");
 $cursor->export();
