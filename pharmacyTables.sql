@@ -1,12 +1,12 @@
-DROP TABLE Customers;
-DROP TABLE Doctors;
-DROP TABLE Medications;
 DROP TABLE Prescriptions;
+DROP TABLE Doctors;
+DROP TABLE Medication_Relation;
+DROP TABLE Medications;
 DROP TABLE Employees;
 DROP TABLE Medication_Type;
-DROP TABLE Insurance;
-DROP TABLE Medication_Relation;
 DROP TABLE Insurance_Relation;
+DROP TABLE Insurance;
+DROP TABLE Customers;
 DROP TABLE Login;
 
 CREATE TABLE Customers (
@@ -134,3 +134,12 @@ insert into Medications Values(null,'Viagra',50);
 insert into Medications Values(null,'Cialis',20);
 insert into Medications Values(null,'Tums',120);
 insert into Medications Values(null,'Tylenol',45);
+
+insert into Medication_Relation Values(1,3);
+insert into Medication_Relation Values(2,3);
+insert into Medication_Relation Values(4,9);
+
+select * from Medication_Relation,Medications,Medication_Type where Medication_Relation.medId = Medications.medId and Medication_Relation.medTypeId = Medication_Type.medTypeId ;
+select typeName from Medication_Relation,Medications,Medication_Type where Medication_Relation.medId = Medications.medId and Medication_Relation.medTypeId = Medication_Type.medTypeId ;
+insert into Prescriptions values(null,2,1,2,1,3,20,'Take after meal');insert into Prescriptions values(null,2,1,2,1,3,20,'Take after meal');
+
