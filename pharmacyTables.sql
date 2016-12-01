@@ -142,9 +142,13 @@ insert into Medication_Relation Values(4,9);
 
 select * from Medication_Relation,Medications,Medication_Type where Medication_Relation.medId = Medications.medId and Medication_Relation.medTypeId = Medication_Type.medTypeId ;
 select typeName from Medication_Relation,Medications,Medication_Type where Medication_Relation.medId = Medications.medId and Medication_Relation.medTypeId = Medication_Type.medTypeId ;
-insert into Prescriptions values(null,2,1,2,1,3,20,'Take after meal');insert into Prescriptions values(null,2,1,2,1,3,20,'Take after meal');
 
+insert into Prescriptions Values(null, 2, 1, 2, 1, 3, 20, 'Take after meal');
 insert into Prescriptions Values(null, 1, 1, null, 1, 2, 25, 'Take one before bed');
 
-insert into Insurance Values(null, 'Geico', '14th St W', 'Fargo', 'ND', 58102, 7017538475);
+insert into Insurance Values(null, 'State Farm', '14th St W', 'Fargo', 'ND', 58102, 7017538475);
 insert into Insurance Values(null, 'Blue Cross', '23rd St E', 'Fargo', 'ND', 58102, 7015436667);
+
+insert into Insurance_Relation Values(1,1);
+insert into Insurance_Relation Values(2,1);
+insert into Insurance_Relation Values(1,2);
