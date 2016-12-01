@@ -12,14 +12,6 @@ $cursor->export();
 
 standard_nav();
 
-function result_message($title, $msg, $type)
-{
-	echo "<div class=\"alert alert-" . $type . " alert-dismissible\">\r\n";
-	echo "<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>";
-	echo "<strong>" . ucfirst($title) . "!</strong> " . $msg . "\r\n";
-	echo "</div>\r\n";
-}
-
 echo "<div class=\"container\">\r\n";
 echo "<h1>Prescription</h1>\r\n";
 

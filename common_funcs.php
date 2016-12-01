@@ -22,6 +22,14 @@ function fixinput($data)
 	return $data;
 }
 
+function result_message($title, $msg, $type)
+{
+	echo "<div class=\"alert alert-" . $type . " alert-dismissible\">\r\n";
+	echo "<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>";
+	echo "<strong>" . ucfirst($title) . "!</strong> " . $msg . "\r\n";
+	echo "</div>\r\n";
+}
+
 function standard_nav()
 {
 	$cursor = new navigation("mainNav");

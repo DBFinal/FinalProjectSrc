@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["loggedin"] == false)
 			$_SESSION["loggedin"] = true;
 			$_SESSION["loguser"] = $username;
 			$_SESSION["logid"] = $res_set["id"];
-			$_SESSION["logpersonid" = $res_set["personId"];
+			$_SESSION["logpersonid"] = $res_set["personId"];
 			$_SESSION["logisdoctor"] = $res_set["doctor"];
 			$_SESSION["logispharmacist"] = !$res_set["doctor"]; //If were not a doctor, then we are a pharmacist.
 		}
