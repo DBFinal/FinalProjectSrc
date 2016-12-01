@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["loggedin"] == false)
 	$username = strtolower(fixinput($_POST["user"]));
 	$password = $_POST["password"];
 	
-	$sql = "SELECT id, password, doctor FROM login WHERE username = '" . $username . "';";
+	$sql = "SELECT id, password, doctor, personId FROM login WHERE username = '" . $username . "';";
 	$res = $mysqli->query($sql);
 	
 	if ($res != false && $res->num_rows > 0)
@@ -80,6 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["loggedin"] == false)
 			$_SESSION["loggedin"] = true;
 			$_SESSION["loguser"] = $username;
 			$_SESSION["logid"] = $res_set["id"];
+			$_SESSION["logpersonid" = $res_set["personId"];
 			$_SESSION["logisdoctor"] = $res_set["doctor"];
 			$_SESSION["logispharmacist"] = !$res_set["doctor"]; //If were not a doctor, then we are a pharmacist.
 		}

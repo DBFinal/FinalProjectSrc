@@ -63,21 +63,6 @@ function initialize_session_vars()
 	}
 }
 
-function kick_out_anons()
-{
-	if (isset($_SESSION["loggedin"]))
-	{
-		if (!$_SESSION["loggedin"])
-		{
-			header("Location:/c9/finalprojectsrc/login.php?e=0");
-		}
-	}
-	else
-	{
-		header("Location:/c9/finalprojectsrc/login.php?e=0");
-	}
-}
-
 function get_user_name()
 {
 	$user = "anonymous";
@@ -97,6 +82,18 @@ function get_user_id()
 	if (isset($_SESSION["logid"]))
 	{
 		$id = intval($_SESSION["logid"]);
+	}
+	
+	return $id;
+}
+
+function get_person_id()
+{
+	$id = -1;
+	
+	if (isset($_SESSION["logperosnid"]))
+	{
+		$id = intval($_SESSION["logpersonid"]);
 	}
 	
 	return $id;
@@ -316,6 +313,47 @@ class jumbotron implements exportable
 		$out .= "<img src=\"" . $this->logo . "\" class=\"img-responsive\" />\r\n";
 		$out .= "</div>\r\n</div>\r\n\r\n";
 		
+		echo $out;
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  Jumbotron Class
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class drop_down_menu implements exportable
+{
+	private $name = "";
+	private $item_count = 0;
+	private $item_text = array();
+	private $item_value = array();
+	
+	function __construct($c_name)
+	{
+		$this->name = $c_name;
+	}
+	
+	function add_item($text,$value)
+	{
+		$this->item_count++;
+		array_push($this->item_text,$text);
+		array_push($this->item_value,$value);
+		return $this->item_count - 1;
+	}
+	
+	function export()
+	{
+		$out = "<!--Drop-Down Menu-->\r\n";
+		$out .= "<select class=\"form-control\" id=\"" . $name . "\">\r\n";
+		
+		for ($i = 0; $i < $this->item_count; $i++)
+		{
+			$out .= "<option value=\"" . $this->item_value[$i] . "\">" . $this->item_text[$i] . "</option>\r\n";
+		}
+		
+		$out .= "</select>\r\n";
 		echo $out;
 	}
 }

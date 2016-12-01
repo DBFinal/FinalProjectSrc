@@ -2,9 +2,6 @@
 
 require("common_funcs.php");
 
-//Deploy this when we're almost done with the project. This is the permissions system.
-//kick_out_anons(); //You must be logged in to see this page.
-
 $cursor = new page_header("Cloud9 Pharma");
 $cursor->add_stylesheet("style_index.css");
 $cursor->add_stylesheet("https://fonts.googleapis.com/css?family=Poiret+One");
@@ -27,8 +24,32 @@ echo "<div class=\"container\">\r\n";
 echo "<h1>Prescription</h1>\r\n";
 
 if (isset($_POST["submit"]))
-{
-	result_message("success","Fake success message here. ;)","info");
+{	
+	$mysqli = new mysqli($db_ip,$db_user,$db_pass,$db_base);
+	if ($mysqli->connect_errno) {exit("Cannot connect to MySQL!");}
+	
+	$customer_id = $_POST["customerid"];
+	$medication_id = $_POST["medicationid"];
+	$pill_count = $_POST["pillcount"];
+	$refill = $_POST["refill"];
+	$instructions = trim($_POST["instructions"]);
+	$doctor = $_POST["doctor"];
+	
+	$stmt = $mysqli->prepare("INSERT INTO Prescriptions VALUES (NULL, ?, ?, NULL, ?, ?, ?, ?)");
+	$stmt->bind_param("iiiiis", $doctor, $customer_id, $medication_id, $refill, $pill_count, $instructions);
+	$res = $stmt->execute();
+	
+	if ($res)
+	{
+		result_message("success","Prescription successfully created!","info");
+	}
+	else
+	{
+		result_message("failure","Prescription could not be created!","danger");
+	}
+	
+	$stmt->close();
+	$mysqli->close();
 }
 
 ?>

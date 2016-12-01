@@ -12,9 +12,23 @@ $cursor->export();
 
 standard_nav();
 
-?>
+function decisions()
+{
+	echo "<br />\r\n";
+	echo "<div class=\"container\">\r\n";
+	echo "<div class=\"row\">\r\n";
+	echo "<div class=\"col-sm-6\">\r\n";
+	echo "<a href=\"fulfillPrescription.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Fulfill Prescription</a>\r\n";
+	echo "</div>\r\n";
+	echo "<div class=\"col-sm-6\">\r\n";
+	echo "<a href=\"#\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Show All Prescriptions</a>\r\n";
+	echo "</div>\r\n</div>\r\n</div>\r\n";
+}
 
-<?php
+//if (pharmacist_privilege()) //Deploy this when we're almost done with the project. This is the permissions system.
+//{
+decisions();
+//}
 
 $cursor = new page_footer("Cloud 9 Pharma");
 $cursor->export();
