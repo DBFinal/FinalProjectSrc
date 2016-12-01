@@ -118,8 +118,10 @@ insert into Doctors Values(null,'Jordan','Falcon',123456789,'TISA');
 insert into Employees Values(null,'Otto', 'Borchert',7558994563,'oborchert@rmail.com','577 81st st n.','Fargo','ND',58102);
 insert into Employees Values(null,'Ronnie', 'Hillman',3332456669,'rhman@zmail.com','6923 N. Broadway','Fargo','ND',58102);
 
-INSERT INTO Login (id, username, password, doctor) VALUES (NULL, 'buster.d.schrader', '$2y$10$WgQrLsWgadAhrGmC44wheOjHswiSkm0z7hoST3.GDrotlR.SbcIYm', 1);
+INSERT INTO Login (id, username, password, doctor) VALUES (NULL, 'bschrade', '$2y$10$WgQrLsWgadAhrGmC44wheOjHswiSkm0z7hoST3.GDrotlR.SbcIYm', 1);
 INSERT INTO Login (id, username, password, doctor) VALUES (NULL, 'rhillman', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 0);
+INSERT INTO Login (id, username, password, doctor) VALUES (NULL, 'jfalcon', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 1);
+INSERT INTO Login (id, username, password, doctor) VALUES (NULL, 'bhapip', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 1);
 
 insert into Medication_Type Values(1,'Antihypertensive');
 insert into Medication_Type Values(2,'Antihistamine');
