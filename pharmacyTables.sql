@@ -10,7 +10,7 @@ DROP TABLE Customers;
 DROP TABLE Login;
 
 CREATE TABLE Customers (
-custID INT (10) NOT NULL AUTO_INCREMENT,
+custId INT (10) NOT NULL AUTO_INCREMENT,
 firstName VARCHAR (255) NOT NULL,
 lastName VARCHAR (255) NOT NULL,
 phone VARCHAR (10) NOT NULL,
@@ -23,7 +23,7 @@ Primary Key (custID)
 );
 
 CREATE TABLE Doctors (
-doctID INT (10) NOT NULL AUTO_INCREMENT,
+doctId INT (10) NOT NULL AUTO_INCREMENT,
 firstName VARCHAR (255) NOT NULL,
 lastName VARCHAR (255) NOT NULL,
 licenseNo VARCHAR (255) NOT NUll,
@@ -104,6 +104,7 @@ id INT (10) NOT NULL AUTO_INCREMENT,
 username VARCHAR(32) NOT NULL,
 password VARCHAR(255) NOT NULL,
 doctor TINYINT(1) NOT NULL,
+personId INT (10) NOT NULL,
 Primary Key (id)
 );
 
@@ -143,8 +144,10 @@ insert into Medications Values(null,'Tylenol',45);
 insert into Medication_Relation Values(1,3);
 insert into Medication_Relation Values(2,3);
 insert into Medication_Relation Values(4,9);
+insert into Medication_Relation Values(4,1);
 
 select * from Medication_Relation,Medications,Medication_Type where Medication_Relation.medId = Medications.medId and Medication_Relation.medTypeId = Medication_Type.medTypeId ;
+
 select typeName from Medication_Relation,Medications,Medication_Type where Medication_Relation.medId = Medications.medId and Medication_Relation.medTypeId = Medication_Type.medTypeId ;
 
 insert into Prescriptions Values(null, 2, 1, 2, 1, 3, 20, 'Take after meal');
