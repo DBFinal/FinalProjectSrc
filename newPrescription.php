@@ -57,7 +57,27 @@ if (isset($_POST["submit"]))
 <div class="form-group">
 <label class="control-label col-sm-3" for="customerid">Customer ID:</label>
 <div class="col-sm-9">
-<input type="number" class="form-control" id="customerid" name="customerid" required />
+<?php
+
+//<input type="number" class="form-control" id="customerid" name="customerid" required />
+
+$cursor = new drop_down_menu("customerid");
+
+$sql = "SELECT custId, CONCAT(custId, ' - ', firstName, ' ', lastName) AS name FROM customers;";
+$res = $mysqli->query($sql);
+
+if ($res != false && $res->num_rows > 0)
+{
+	while ($res_set = $res->fetch_assoc())
+	{
+		$cursor->add_item($res_set["name"],$res_set["custId"]);
+	}
+}
+
+$cursor->export();
+$res->free();
+
+?>
 </div>
 </div>
 <div class="form-group">

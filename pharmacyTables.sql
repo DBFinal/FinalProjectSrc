@@ -112,7 +112,7 @@ insert into Customers Values(null,'Richard','Sherman',7015578952,'rsherman@gmail
 insert into Customers Values(null,'Aditya','Bhasin',7015557452,'abhasin@gmail.com','123 7th st N','Fargo','ND', 58102);
 insert into Customers Values(null,'Billy','Joel',7012348594,'bjoel@gmail.com','324 3rd st S','Jamestown','ND', 58401);
 insert into Customers Values(null,'Greg','Oden',7013489234,'goden@gmail.com','5345 5th st E','Trenton','ND', 58853);
-insert into Customers Values(null,'Marilyn','Manson',7012389823,'mmanson@gmail.com','PO BOX 532','Dickinson','ND'58601);
+insert into Customers Values(null,'Marilyn','Manson',7012389823,'mmanson@gmail.com','PO BOX 532','Dickinson','ND', 58601);
 
 
 insert into Doctors Values(null,'Buster','Schrader',123459876,'Tyrones Ghetto Clinic');
