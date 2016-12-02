@@ -103,7 +103,7 @@ CREATE TABLE Login (
 id INT (10) NOT NULL AUTO_INCREMENT,
 username VARCHAR(32) NOT NULL,
 password VARCHAR(255) NOT NULL,
-doctor TINYINT(1) NOT NULL,
+job TINYINT(1) NOT NULL,
 personId INT (10) NOT NULL,
 Primary Key (id)
 );
@@ -119,7 +119,8 @@ insert into Doctors Values(null,'Jordan','Falcon',123456789,'TISA');
 insert into Employees Values(null,'Otto', 'Borchert',7558994563,'oborchert@rmail.com','577 81st st n.','Fargo','ND',58102);
 insert into Employees Values(null,'Ronnie', 'Hillman',3332456669,'rhman@zmail.com','6923 N. Broadway','Fargo','ND',58102);
 
-INSERT INTO Login VALUES (NULL, 'bschrade', '$2y$10$WgQrLsWgadAhrGmC44wheOjHswiSkm0z7hoST3.GDrotlR.SbcIYm', 1, 1);
+INSERT INTO Login VALUES (NULL, 'admin', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 2, -1);
+INSERT INTO Login VALUES (NULL, 'bschrade', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 1, 1);
 INSERT INTO Login VALUES (NULL, 'rhillman', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 0, 2);
 INSERT INTO Login VALUES (NULL, 'jfalcon', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 1, 3);
 INSERT INTO Login VALUES (NULL, 'bhapip', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 1, 2);

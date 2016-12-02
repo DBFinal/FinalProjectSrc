@@ -83,9 +83,9 @@ function doctor_privilege()
 {
 	$doctor = false;
 	
-	if (isset($_SESSION["logisdoctor"]))
+	if (isset($_SESSION["logjob"]))
 	{
-		if ($_SESSION["logisdoctor"] == 1)
+		if ($_SESSION["logjob"] == 1)
 		{
 			$doctor = true;
 		}
@@ -98,15 +98,31 @@ function pharmacist_privilege()
 {
 	$pharmacist = false;
 	
-	if (isset($_SESSION["logispharmacist"]))
+	if (isset($_SESSION["logjob"]))
 	{
-		if ($_SESSION["logispharmacist"] == 1)
+		if ($_SESSION["logjob"] == 0)
 		{
 			$pharmacist = true;
 		}
 	}
 	
 	return $pharmacist;
+}
+
+
+function admin_privilege()
+{
+	$admin = false;
+	
+	if (isset($_SESSION["logjob"]))
+	{
+		if ($_SESSION["logjob"] == 2)
+		{
+			$admin = true;
+		}
+	}
+	
+	return $admin;
 }
 
 function standard_nav()
@@ -121,6 +137,10 @@ function standard_nav()
 	elseif (pharmacist_privilege())
 	{
 		$cursor->add_item("Pharmacists","/c9/finalprojectsrc/pharmacists.php","cloud");
+	}
+	elseif (admin_privilege())
+	{
+		$cursor->add_item("Admins","/c9/finalprojectsrc/admins.php","pencil");
 	}
 	
 	$cursor->add_item("About Us","/c9/finalprojectsrc/aboutUs.php","info-sign");

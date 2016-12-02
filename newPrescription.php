@@ -64,7 +64,6 @@ if (isset($_POST["submit"]))
 <label class="control-label col-sm-3" for="medicationid">Medication ID:</label>
 <div class="col-sm-9">
 <?php
-//<input type="number" class="form-control" id="medicationid" name="medicationid" required />
 
 $cursor = new drop_down_menu("medicationid");
 

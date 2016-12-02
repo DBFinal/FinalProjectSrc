@@ -25,10 +25,7 @@ function decisions()
 	echo "</div>\r\n</div>\r\n</div>\r\n";
 }
 
-//if (pharmacist_privilege()) //Deploy this when we're almost done with the project. This is the permissions system.
-//{
 decisions();
-//}
 
 $cursor = new page_footer("Cloud 9 Pharma");
 $cursor->export();
