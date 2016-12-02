@@ -19,7 +19,7 @@ echo "<div class=\"container\">\r\n";
 
 if (doctor_privilege())
 {
-	/*$sql = "SELECT CONCAT(customers.firstName,' ',customers.lastName) AS customer,
+	$sql = "SELECT CONCAT(customers.firstName,' ',customers.lastName) AS customer,
 			medications.name AS medicine,
 			typeName AS type,
 			refills, pillCount, instructions
@@ -28,22 +28,9 @@ if (doctor_privilege())
 			INNER JOIN medications ON medications.medId = p.medId
 			INNER JOIN medication_relation AS mr ON mr.medId = p.medId
 			INNER JOIN medication_type AS mt ON mt.medTypeId = mr.medTypeId
-			WHERE p.doctId = '" . $_SESSION["logpersonid"] . "' AND empId IS ";*/
+			WHERE empId IS ";
 			
-	$sql1 = "SELECT CONCAT(customers.firstName,' ',customers.lastName) AS customer,
-			medications.name AS medicine,
-			GROUP_CONCAT(' ',typeName) AS type,
-			refills, pillCount, instructions
-			FROM prescriptions AS p
-			INNER JOIN customers ON customers.custId = p.custId
-			INNER JOIN medications ON medications.medId = p.medId
-			INNER JOIN medication_relation AS mr ON mr.medId = p.medId
-			INNER JOIN medication_type AS mt ON mt.medTypeId = mr.medTypeId
-			WHERE p.doctId = '" . $_SESSION["logpersonid"] . "' AND empId IS ";
-			
-	$sql2 = " GROUP BY p.prescripId";
-			
-	$res = $mysqli->query($sql1 . "NULL" . $sql2);
+	$res = $mysqli->query($sql . "NULL");
 
 	if ($res != false && $res->num_rows > 0)
 	{
@@ -60,7 +47,7 @@ if (doctor_privilege())
 		echo "</table>\r\n";
 	}
 	
-	$res = $mysqli->query($sql1 . "NOT NULL" . $sql2);
+	$res = $mysqli->query($sql . "NOT NULL");
 	
 	if ($res != false && $res->num_rows > 0)
 	{

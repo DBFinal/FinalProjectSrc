@@ -21,8 +21,16 @@ function decisions()
 	echo "<a href=\"user_maker.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Create New User</a>\r\n";
 	echo "</div>\r\n";
 	echo "<div class=\"col-sm-6\">\r\n";
+	echo "<a href=\"#.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Edit Staff</a>\r\n";
+	echo "</div>\r\n";
+	echo "</div>\r\n";
+	echo "<br />";
+	echo "<div class=\"row\">\r\n";
+	echo "<div class=\"col-sm-6\">\r\n";
 	echo "<a href=\"#.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Edit Customer</a>\r\n";
-	echo "</div>\r\n</div>\r\n</div>\r\n";
+	echo "</div>\r\n";
+	echo "</div>\r\n";
+	echo "</div>\r\n";
 }
 
 decisions();
