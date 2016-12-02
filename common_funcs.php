@@ -30,34 +30,6 @@ function result_message($title, $msg, $type)
 	echo "</div>\r\n";
 }
 
-function standard_nav()
-{
-	$cursor = new navigation("mainNav");
-	$cursor->add_item("Home","/c9/finalprojectsrc/index.php","home");
-	$cursor->add_item("Doctors","/c9/finalprojectsrc/doctors.php","heart");
-	$cursor->add_item("Pharmacists","/c9/finalprojectsrc/pharmacists.php","cloud");
-	$cursor->add_item("About Us","/c9/finalprojectsrc/aboutUs.php","info-sign");
-
-	if (!isset($_SESSION["loggedin"]))
-	{
-		$_SESSION["loggedin"] = false;
-	}
-	
-	if ($_SESSION["loggedin"])
-	{
-		$rside = $cursor->add_item($_SESSION["loguser"],"","user");
-		$cursor->set_right_side($rside);
-	}
-	else
-	{
-		$rside = $cursor->add_item("Login","/c9/finalprojectsrc/login.php","log-in");
-		$cursor->set_right_side($rside);
-	}
-
-	$cursor->set_active_on_href($_SERVER["PHP_SELF"]);
-	$cursor->export();
-}
-
 function standard_title($title)
 {
 	echo "<!--Title-->\r\n<div class=\"container text-center\">\r\n<h1>" . $title . "</h1>\r\n</div>\r\n\r\n";
@@ -135,6 +107,44 @@ function pharmacist_privilege()
 	}
 	
 	return $pharmacist;
+}
+
+function standard_nav()
+{
+	$cursor = new navigation("mainNav");
+	$cursor->add_item("Home","/c9/finalprojectsrc/index.php","home");
+	
+	if (doctor_privilege())
+	{
+		$cursor->add_item("Doctors","/c9/finalprojectsrc/doctors.php","heart");
+	}
+	elseif (pharmacist_privilege())
+	{
+		$cursor->add_item("Pharmacists","/c9/finalprojectsrc/pharmacists.php","cloud");
+	}
+	
+	$cursor->add_item("About Us","/c9/finalprojectsrc/aboutUs.php","info-sign");
+
+	if (!isset($_SESSION["loggedin"]))
+	{
+		$_SESSION["loggedin"] = false;
+	}
+	
+	if ($_SESSION["loggedin"])
+	{
+		$rside = $cursor->add_item($_SESSION["loguser"],"","user");
+		$cursor->set_right_side($rside);
+		$rside = $cursor->add_item("Log-out","/c9/finalprojectsrc/logout.php","log-out");
+		$cursor->set_right_side($rside);
+	}
+	else
+	{
+		$rside = $cursor->add_item("Login","/c9/finalprojectsrc/login.php","log-in");
+		$cursor->set_right_side($rside);
+	}
+
+	$cursor->set_active_on_href($_SERVER["PHP_SELF"]);
+	$cursor->export();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -354,7 +364,7 @@ class drop_down_menu implements exportable
 	function export()
 	{
 		$out = "<!--Drop-Down Menu-->\r\n";
-		$out .= "<select class=\"form-control\" id=\"" . $name . "\">\r\n";
+		$out .= "<select class=\"form-control\" name=\"" . $this->name . "\" id=\"" . $this->name . "\">\r\n";
 		
 		for ($i = 0; $i < $this->item_count; $i++)
 		{

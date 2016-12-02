@@ -15,33 +15,39 @@ standard_nav();
 echo "<div class=\"container\">\r\n";
 echo "<h1>Prescription</h1>\r\n";
 
+$mysqli = new mysqli($db_ip,$db_user,$db_pass,$db_base);
+if ($mysqli->connect_errno) {exit("Cannot connect to MySQL!");}
+
 if (isset($_POST["submit"]))
-{	
-	$mysqli = new mysqli($db_ip,$db_user,$db_pass,$db_base);
-	if ($mysqli->connect_errno) {exit("Cannot connect to MySQL!");}
-	
-	$customer_id = $_POST["customerid"];
-	$medication_id = $_POST["medicationid"];
-	$pill_count = $_POST["pillcount"];
-	$refill = $_POST["refill"];
-	$instructions = trim($_POST["instructions"]);
-	$doctor = $_POST["doctor"];
-	
-	$stmt = $mysqli->prepare("INSERT INTO Prescriptions VALUES (NULL, ?, ?, NULL, ?, ?, ?, ?)");
-	$stmt->bind_param("iiiiis", $doctor, $customer_id, $medication_id, $refill, $pill_count, $instructions);
-	$res = $stmt->execute();
-	
-	if ($res)
+{
+	if (doctor_privilege())
 	{
-		result_message("success","Prescription successfully created!","info");
+		$customer_id = $_POST["customerid"];
+		$medication_id = $_POST["medicationid"];
+		$pill_count = $_POST["pillcount"];
+		$refill = $_POST["refill"];
+		$instructions = trim($_POST["instructions"]);
+		$doctor = $_SESSION["logpersonid"];
+		
+		$stmt = $mysqli->prepare("INSERT INTO Prescriptions VALUES (NULL, ?, ?, NULL, ?, ?, ?, ?)");
+		$stmt->bind_param("iiiiis", $doctor, $customer_id, $medication_id, $refill, $pill_count, $instructions);
+		$res = $stmt->execute();
+		
+		if ($res)
+		{
+			result_message("success","Prescription successfully created!","info");
+		}
+		else
+		{
+			result_message("failure","Prescription could not be created!","danger");
+		}
+		
+		$stmt->close();
 	}
 	else
 	{
-		result_message("failure","Prescription could not be created!","danger");
+		result_message("problem","You cannot create prescriptions, check your login!","warning");
 	}
-	
-	$stmt->close();
-	$mysqli->close();
 }
 
 ?>
@@ -57,7 +63,26 @@ if (isset($_POST["submit"]))
 <div class="form-group">
 <label class="control-label col-sm-3" for="medicationid">Medication ID:</label>
 <div class="col-sm-9">
-<input type="number" class="form-control" id="medicationid" name="medicationid" required />
+<?php
+//<input type="number" class="form-control" id="medicationid" name="medicationid" required />
+
+$cursor = new drop_down_menu("medicationid");
+
+$sql = "SELECT medId, name FROM medications";
+$res = $mysqli->query($sql);
+
+if ($res != false && $res->num_rows > 0)
+{
+	while ($res_set = $res->fetch_assoc())
+	{
+		$cursor->add_item($res_set["name"],$res_set["medId"]);
+	}
+}
+
+$cursor->export();
+$res->free();
+
+?>
 </div>
 </div>
 <div class="form-group">
@@ -79,12 +104,6 @@ if (isset($_POST["submit"]))
 </div>
 </div>
 <div class="form-group">
-<label class="control-label col-sm-3" for="doctor">Verify by Doctor ID:</label>
-<div class="col-sm-9">
-<input type="number" class="form-control" id="doctor" name="doctor" required />
-</div>
-</div>
-<div class="form-group">
 <label class="control-label col-sm-3" for="submit">&nbsp;</label>
 <div class="col-sm-9">
 <button type="submit" id="submit" name="submit" class="btn btn-primary">Create Prescription</button>
@@ -100,5 +119,7 @@ echo "</div>\r\n";
 
 $cursor = new page_footer("Cloud 9 Pharma");
 $cursor->export();
+
+$mysqli->close();
 
 ?>

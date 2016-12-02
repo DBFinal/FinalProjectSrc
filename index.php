@@ -114,10 +114,12 @@ standard_nav();
 
 $motto = "Get medicated with Cloud9 Pharmacy!";
 $cursor = new carousel("main_caro");
+
+$cursor->add_item("img/carousel/image1.jpg","You better hope that water is clean!",$motto);
 $cursor->add_item("img/carousel/image2.jpg","Did you eat some bad shrooms?",$motto);
 $cursor->add_item("img/carousel/image3.jpg","Don't let these critters leave germs on your food!",$motto);
 $cursor->add_item("img/carousel/image4.jpg","You won't believe how much money we steal from you!",$motto);
-$cursor->add_item("img/carousel/image1.jpg","You better hope that water is clean!",$motto);
+
 $cursor->export();
 
 $cursor = new page_footer("Cloud 9 Pharma");

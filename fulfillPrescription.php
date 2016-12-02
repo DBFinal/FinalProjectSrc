@@ -90,7 +90,7 @@ if (isset($_POST["fulfill"]) && isset($_SESSION["prescript"]))
 	}
 	else
 	{
-		result_message("problem","You cannot fulfill prescriptions, check your login.!","warning");
+		result_message("problem","You cannot fulfill prescriptions, check your login!","warning");
 	}
 	
 	unset($_SESSION["prescript"]);
