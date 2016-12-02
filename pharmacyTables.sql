@@ -110,6 +110,9 @@ Primary Key (id)
 
 insert into Customers Values(null,'Richard','Sherman',7015578952,'rsherman@gmail.com','69420 12th st N','Fargo','ND', 58102);
 insert into Customers Values(null,'Aditya','Bhasin',7015557452,'abhasin@gmail.com','123 7th st N','Fargo','ND', 58102);
+insert into Customers Values(null,'Billy','Joel',7012348594,'bjoel@gmail.com','324 3rd st S','Jamestown','ND', 58401);
+insert into Customers Values(null,'Greg','Oden',7013489234,'goden@gmail.com','5345 5th st E','Trenton','ND', 58853);
+insert into Customers Values(null,'Marilyn','Manson',7012389823,'mmanson@gmail.com','PO BOX 532','Dickinson','ND'58601);
 
 
 insert into Doctors Values(null,'Buster','Schrader',123459876,'Tyrones Ghetto Clinic');
@@ -140,12 +143,26 @@ insert into Medications Values(null,'Viagra',50);
 insert into Medications Values(null,'Cialis',20);
 insert into Medications Values(null,'Tums',120);
 insert into Medications Values(null,'Tylenol',45);
+insert into Medications Values(null,'Mucinex',50);
+insert into Medications Values(null,'Vicodin',10);
+insert into Medications Values(null,'Pseudoephedrine',70);
+insert into Medications Values(null,'Prilosec',80);
+insert into Medications Values(null,'Dulcolax',100);
+insert into Medications Values(null,'Abilify', 200);
 
 
 insert into Medication_Relation Values(1,3);
 insert into Medication_Relation Values(2,3);
 insert into Medication_Relation Values(4,9);
 insert into Medication_Relation Values(4,1);
+insert into Medication_Relation Values(5,2);
+insert into Medication_Relation Values(6,9);
+insert into Medication_Relation Values(3,7);
+insert into Medication_Relation Values(7,2);
+insert into Medication_Relation Values(8,4);
+insert into Medication_Relation Values(9,5);
+insert into Medication_Relation Values(10,10);
+
 
 select * from Medication_Relation,Medications,Medication_Type where Medication_Relation.medId = Medications.medId and Medication_Relation.medTypeId = Medication_Type.medTypeId ;
 
