@@ -1,3 +1,4 @@
+
 DROP TABLE Prescriptions;
 DROP TABLE Doctors;
 DROP TABLE Medication_Relation;
@@ -119,8 +120,11 @@ insert into Doctors Values(null,'Buster','Schrader',123459876,'Tyrones Ghetto Cl
 insert into Doctors Values(null,'Ben','Hapip',123456987,'Weeny Hut Clinic');
 insert into Doctors Values(null,'Jordan','Falcon',123456789,'TISA');
 
-insert into Employees Values(null,'Otto', 'Borchert',7558994563,'oborchert@rmail.com','577 81st st n.','Fargo','ND',58102);
-insert into Employees Values(null,'Ronnie', 'Hillman',3332456669,'rhman@zmail.com','6923 N. Broadway','Fargo','ND',58102);
+insert into Employees Values(null,'Otto', 'Borchert',1447899696,'oborchert@rmail.com','577 81st st n.','Fargo','ND',58102);
+insert into Employees Values(null,'Ronnie', 'Hillman',2036904200,'rhman@zmail.com','6923 N. Broadway','Fargo','ND',58102);
+insert into Employees Values(null,'Derek', 'Carr',1547894563,'dcarr@rmail.com','57 N. broadway.','Fargo','ND',58102);
+insert into Employees Values(null,'Joey', 'Bosa',1947635987,'jbosa@pmail.com','1234 Krishna Ln.','Fargo','ND',58105);
+
 
 INSERT INTO Login VALUES (NULL, 'admin', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 2, -1);
 INSERT INTO Login VALUES (NULL, 'bschrade', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 1, 1);
