@@ -19,18 +19,18 @@ echo "<div class=\"container\">\r\n";
 
 if (doctor_privilege())
 {
-	$sql1 = "SELECT CONCAT(customers.firstName,' ',customers.lastName) AS customer,
-			medications.name AS medicine,
+	$sql1 = "SELECT CONCAT(Customers.firstName,' ',Customers.lastName) AS customer,
+			Medications.name AS medicine,
 			GROUP_CONCAT(' ',typeName) AS type,
 			refills, pillCount, instructions
-			FROM prescriptions AS p
-			INNER JOIN customers ON customers.custId = p.custId
-			INNER JOIN medications ON medications.medId = p.medId
-			INNER JOIN medication_relation AS mr ON mr.medId = p.medId
-			INNER JOIN medication_type AS mt ON mt.medTypeId = mr.medTypeId
+			FROM Prescriptions AS p
+			INNER JOIN Customers ON Customers.custId = p.custId
+			INNER JOIN Medications ON Medications.medId = p.medId
+			INNER JOIN Medication_Relation AS mr ON mr.medId = p.medId
+			INNER JOIN Medication_Type AS mt ON mt.medTypeId = mr.medTypeId
 			WHERE p.doctId = '" . $_SESSION["logpersonid"] . "' AND empId IS ";
 			
-	$sql2 = " GROUP BY p.prescripId ORDER BY customers.lastName";
+	$sql2 = " GROUP BY p.prescripId ORDER BY Customers.lastName";
 	
 	$res = $mysqli->query($sql1 . "NULL" . $sql2);
 

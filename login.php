@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["loggedin"] == false)
 	$username = strtolower(fixinput($_POST["user"]));
 	$password = $_POST["password"];
 	
-	$sql = "SELECT id, password, job, personId FROM login WHERE username = '" . $username . "';";
+	$sql = "SELECT id, password, job, personId FROM Login WHERE username = '" . $username . "';";
 	$res = $mysqli->query($sql);
 	
 	if ($res != false && $res->num_rows > 0)

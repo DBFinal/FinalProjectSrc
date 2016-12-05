@@ -21,21 +21,21 @@ if ($mysqli->connect_errno) {exit("Cannot connect to MySQL!");}
 if (isset($_POST["submit"]))
 {
 	$sql = "SELECT
-			prescriptions.prescripId AS pid,
-			CONCAT(doctors.firstName,' ',doctors.lastName,' ',licenseNo) AS doctor,
-			CONCAT(customers.firstName,' ',customers.lastName) AS customer,
-			customers.phone AS phone,
+			Prescriptions.prescripId AS pid,
+			CONCAT(Doctors.firstName,' ',Doctors.lastName,' ',licenseNo) AS doctor,
+			CONCAT(Customers.firstName,' ',Customers.lastName) AS customer,
+			Customers.phone AS phone,
 			refills,
 			pillCount,
 			instructions,
 			clinic,
-			medications.name AS medicine,
+			Medications.name AS medicine,
 			supplyQuantity
-			FROM prescriptions
-			INNER JOIN doctors ON doctors.doctId = prescriptions.doctId
-			INNER JOIN customers ON customers.custId = prescriptions.custId
-			INNER JOIN medications ON medications.medId = prescriptions.medId
-			WHERE prescriptions.empId IS NULL AND prescriptions.custId = '" . $_POST["customerid"] . "'";
+			FROM Prescriptions
+			INNER JOIN Doctors ON Doctors.doctId = Prescriptions.doctId
+			INNER JOIN Customers ON Customers.custId = Prescriptions.custId
+			INNER JOIN Medications ON Medications.medId = Prescriptions.medId
+			WHERE Prescriptions.empId IS NULL AND Prescriptions.custId = '" . $_POST["customerid"] . "'";
 			
 	$res = $mysqli->query($sql);
 	
@@ -76,7 +76,7 @@ if (isset($_POST["fulfill"]) && isset($_SESSION["prescript"]))
 {
 	if (pharmacist_privilege())
 	{
-		$sql = "UPDATE prescriptions SET empId = '" . $_SESSION["logpersonid"] . "' WHERE prescripId = '" . $_SESSION["prescript"] . "'";
+		$sql = "UPDATE Prescriptions SET empId = '" . $_SESSION["logpersonid"] . "' WHERE prescripId = '" . $_SESSION["prescript"] . "'";
 		$res = $mysqli->query($sql);
 		
 		if ($res != false)
@@ -106,10 +106,10 @@ echo "<div class=\"col-sm-9\">\r\n";
 
 $cursor = new drop_down_menu("customerid");
 
-$sql = "SELECT prescriptions.custID AS id,
-		CONCAT(prescriptions.prescripId,' - ',customers.firstName,' ',customers.lastname) AS name
-		FROM prescriptions
-		INNER JOIN customers ON customers.custId = prescriptions.custId
+$sql = "SELECT Prescriptions.custID AS id,
+		CONCAT(Prescriptions.prescripId,' - ',Customers.firstName,' ',Customers.lastname) AS name
+		FROM Prescriptions
+		INNER JOIN Customers ON Customers.custId = Prescriptions.custId
 		WHERE empId IS NULL";
 		
 $res = $mysqli->query($sql);
@@ -130,7 +130,7 @@ else
 
 $cursor->export();
 
-$sql = "SELECT COUNT(prescripId) AS amt FROM prescriptions WHERE empId IS NULL";
+$sql = "SELECT COUNT(prescripId) AS amt FROM Prescriptions WHERE empId IS NULL";
 $res = $mysqli->query($sql);
 
 if ($res != false)

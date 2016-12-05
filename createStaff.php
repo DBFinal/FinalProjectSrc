@@ -108,7 +108,7 @@ if (isset($_POST["create"]))
 	{
 		if ($job == 0) //We are a pharmacist.
 		{
-			$sql .= "employees VALUES (NULL,'" . $_POST["firstname"] . "','"
+			$sql .= "Employees VALUES (NULL,'" . $_POST["firstname"] . "','"
 				. $_POST["lastname"] . "','"
 				. $_POST["phone"] . "','"
 				. $_POST["email"] . "','"
@@ -126,7 +126,7 @@ if (isset($_POST["create"]))
 		}
 		else //We're a doctor.
 		{
-			$sql .= "doctors VALUES (NULL,'" . $_POST["firstname"] . "','"
+			$sql .= "Doctors VALUES (NULL,'" . $_POST["firstname"] . "','"
 				. $_POST["lastname"] . "','"
 				. $_POST["license"] . "','"
 				. $_POST["clinic"] . "')";

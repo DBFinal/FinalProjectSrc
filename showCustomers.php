@@ -17,7 +17,7 @@ if ($mysqli->connect_errno) {exit("Cannot connect to MySQL!");}
 
 echo "<div class=\"container\">\r\n";
 
-$sql = "SELECT * FROM customers";
+$sql = "SELECT * FROM Customers";
 $res = $mysqli->query($sql);
 
 echo "<h1>Customer Data:</h1>\r\n";

@@ -20,14 +20,14 @@ echo "<div class=\"container\">\r\n";
 if (pharmacist_privilege())
 {
 	$sql = "SELECT CONCAT(customers.firstName,' ',customers.lastName) AS customer,
-			medications.name AS medicine,
+			Medications.name AS medicine,
 			typeName AS type,
 			refills, pillCount, instructions
-			FROM prescriptions AS p
-			INNER JOIN customers ON customers.custId = p.custId
-			INNER JOIN medications ON medications.medId = p.medId
-			INNER JOIN medication_relation AS mr ON mr.medId = p.medId
-			INNER JOIN medication_type AS mt ON mt.medTypeId = mr.medTypeId
+			FROM Prescriptions AS p
+			INNER JOIN Customers ON Customers.custId = p.custId
+			INNER JOIN Medications ON Medications.medId = p.medId
+			INNER JOIN Medication_Relation AS mr ON mr.medId = p.medId
+			INNER JOIN Medication_Type AS mt ON mt.medTypeId = mr.medTypeId
 			WHERE empId IS ";
 			
 	$res = $mysqli->query($sql . "NULL");

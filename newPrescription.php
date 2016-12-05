@@ -63,7 +63,7 @@ if (isset($_POST["submit"]))
 
 $cursor = new drop_down_menu("customerid");
 
-$sql = "SELECT custId, CONCAT(custId, ' - ', firstName, ' ', lastName) AS name FROM customers;";
+$sql = "SELECT custId, CONCAT(custId, ' - ', firstName, ' ', lastName) AS name FROM Customers;";
 $res = $mysqli->query($sql);
 
 if ($res != false && $res->num_rows > 0)
@@ -87,7 +87,7 @@ $res->free();
 
 $cursor = new drop_down_menu("medicationid");
 
-$sql = "SELECT medId, name FROM medications";
+$sql = "SELECT medId, name FROM Medications";
 $res = $mysqli->query($sql);
 
 if ($res != false && $res->num_rows > 0)

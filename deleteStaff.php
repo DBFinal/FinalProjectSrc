@@ -17,12 +17,12 @@ if ($mysqli->connect_errno) {exit("Cannot connect to MySQL!");}
 echo "<div class=\"container\">\r\n";
 
 $sql1 = "SELECT empId AS eId,
-			CONCAT(employees.firstName,' ',employees.lastName) AS emp,
+			CONCAT(Employees.firstName,' ',Employees.lastName) AS emp,
 			phone AS p,
 			email AS e,
 			address AS a,
-			CONCAT(employees.city,', ',employees.state, ', ' ,employees.zipCode) as city
-			FROM employees
+			CONCAT(Employees.city,', ',Employees.state, ', ' ,Employees.zipCode) as city
+			FROM Employees
 			INNER JOIN Login ON empId = personId
             WHERE job = '0';"; //Added a join so you can only delete those with login. That way it doesn't show anyone kept for records sake.
 			
@@ -57,13 +57,13 @@ if ($res != false)
 if (isset($_POST["submit"]))
 {
 	$sql = "SELECT empId AS eId,
-			CONCAT(employees.firstName,' ',employees.lastName) AS emp,
+			CONCAT(Employees.firstName,' ',Employees.lastName) AS emp,
 			phone AS p,
 			email AS e,
 			address AS a,
-			CONCAT(employees.city,', ',employees.state, ', ' ,employees.zipCode) as city
-			FROM employees
-			WHERE employees.empId = '" . $_POST["employeeid"] . "'";
+			CONCAT(Employees.city,', ',Employees.state, ', ' ,Employees.zipCode) as city
+			FROM Employees
+			WHERE Employees.empId = '" . $_POST["employeeid"] . "'";
 			
 	$res = $mysqli->query($sql);
 	
@@ -99,12 +99,12 @@ if (isset($_POST["submit"]))
 	
 if (isset($_POST["fulfill"]) && isset($_SESSION["goodbye"]))
 {
-	$sql = "DELETE FROM login WHERE job = '0' AND personId = '" . $_SESSION["goodbye"] . "'";
+	$sql = "DELETE FROM Login WHERE job = '0' AND personId = '" . $_SESSION["goodbye"] . "'";
 	$res = $mysqli->query($sql);
 	
 	if ($res != false)
 	{
-		$sql = "DELETE FROM employees WHERE empId = '" . $_SESSION["goodbye"] . "'";
+		$sql = "DELETE FROM Employees WHERE empId = '" . $_SESSION["goodbye"] . "'";
 		$res = $mysqli->query($sql);
 		
 		if ($res != false)
