@@ -22,7 +22,15 @@ function decisions()
 	echo "</div>\r\n";
 	echo "<div class=\"col-sm-6\">\r\n";
 	echo "<a href=\"showCurrent.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Show My Prescriptions</a>\r\n";
-	echo "</div>\r\n</div>\r\n</div>\r\n";
+	echo "</div>\r\n";
+	echo "</div>\r\n";
+	echo "<br />";
+	echo "<div class=\"row\">\r\n";
+	echo "<div class=\"col-sm-6\">\r\n";
+	echo "<a href=\"createCustomer.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Add Patient</a>\r\n";
+	echo "</div>\r\n";
+	echo "</div>\r\n";
+	echo "</div>\r\n";
 }
 
 decisions();

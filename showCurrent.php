@@ -74,7 +74,7 @@ if (doctor_privilege())
 				echo "<td>" . $res_set["refills"] . "</td><td>" . $res_set["pillCount"] . "</td><td>" . $res_set["instructions"] . "</td></tr>\r\n";
 			}
 			
-			echo "</table>\r\n<div>\r\n";
+			echo "</table>\r\n</div>\r\n";
 		}
 		else
 		{

@@ -21,7 +21,7 @@ function decisions()
 	echo "<a href=\"fulfillPrescription.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Fulfill Prescription</a>\r\n";
 	echo "</div>\r\n";
 	echo "<div class=\"col-sm-6\">\r\n";
-	echo "<a href=\"#\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Show All Prescriptions</a>\r\n";
+	echo "<a href=\"showAllPrescriptions.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Show All Prescriptions</a>\r\n";
 	echo "</div>\r\n</div>\r\n</div>\r\n";
 }
 

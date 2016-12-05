@@ -17,7 +17,7 @@ if ($mysqli->connect_errno) {exit("Cannot connect to MySQL!");}
 
 echo "<div class=\"container\">\r\n";
 
-if (doctor_privilege())
+if (pharmacist_privilege())
 {
 	$sql = "SELECT CONCAT(customers.firstName,' ',customers.lastName) AS customer,
 			medications.name AS medicine,
