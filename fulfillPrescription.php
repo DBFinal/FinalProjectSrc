@@ -136,7 +136,17 @@ $res = $mysqli->query($sql);
 if ($res != false)
 {
 	$res_set = $res->fetch_assoc();
-	echo "There are " . $res_set["amt"] . " unfilled prescription(s)!<br />\r\n";
+	
+	$word = "are";
+	$plural = "s";
+	
+	if (intval($res_set["amt"]) == 1)
+	{
+		$word = "is";
+		$plural = "";
+	}
+	
+	echo "There " . $word . " " . $res_set["amt"] . " unfilled prescription" . $plural . "!<br />\r\n";
 	$res->free();
 }
 

@@ -34,11 +34,11 @@ if (isset($_POST["submit"]))
 	
 	if ($res == false)
 	{
-		result_message("error","Could not add customer, check query!","danger");
+		result_message("error","Could not add patient, check query!","danger");
 	}
 	else
 	{
-		result_message("success","Customer successfully added!","info");
+		result_message("success","Patient successfully added!","info");
 	}
 	
 	$mysqli->close();

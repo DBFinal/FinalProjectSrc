@@ -175,6 +175,7 @@ select typeName from Medication_Relation,Medications,Medication_Type where Medic
 
 insert into Prescriptions Values(null, 2, 1, 2, 1, 3, 20, 'Take after meal');
 insert into Prescriptions Values(null, 1, 1, null, 1, 2, 25, 'Take one before bed');
+insert into Prescriptions Values(null, 1, 2, 2, 6, 0, 10, 'Every night before food once daily to be taken four times a day three times a day every three times daily take one take two take three one or two');
 
 insert into Insurance Values(null, 'State Farm', '14th St W', 'Fargo', 'ND', 58102, 7017538475);
 insert into Insurance Values(null, 'Blue Cross', '23rd St E', 'Fargo', 'ND', 58102, 7015436667);
