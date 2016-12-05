@@ -117,7 +117,7 @@ if ($_SESSION["loggedin"])
 	header("Location:/c9/finalprojectsrc/index.php");
 }
 
-$cursor = new page_header("Cloud9 Pharma");
+$cursor = new page_header("Cloud9 Pharmacy");
 $cursor->add_stylesheet("style_index.css");
 $cursor->add_stylesheet("https://fonts.googleapis.com/css?family=Poiret+One");
 $cursor->export();
@@ -131,7 +131,7 @@ standard_title("Login");
 $cursor = new login($error);
 $cursor->export();
 
-$cursor = new page_footer("Cloud9 Pharma");
+$cursor = new page_footer("Cloud9 Pharmacy");
 $cursor->export();
 
 $mysqli->close();

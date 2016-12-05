@@ -94,7 +94,7 @@ class carousel implements exportable
 	}
 }
 
-$cursor = new page_header("Cloud9 Pharma");
+$cursor = new page_header("Cloud9 Pharmacy");
 $cursor->add_stylesheet("style_index.css");
 $cursor->add_stylesheet("https://fonts.googleapis.com/css?family=Poiret+One");
 $cursor->export();
@@ -122,7 +122,7 @@ $cursor->add_item("img/carousel/image4.jpg","You won't believe how much money we
 
 $cursor->export();
 
-$cursor = new page_footer("Cloud 9 Pharma");
+$cursor = new page_footer("Cloud9 Pharmacy");
 $cursor->export();
 
 ?>

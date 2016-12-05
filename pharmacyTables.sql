@@ -131,6 +131,7 @@ INSERT INTO Login VALUES (NULL, 'bschrade', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrU
 INSERT INTO Login VALUES (NULL, 'rhillman', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 0, 2);
 INSERT INTO Login VALUES (NULL, 'jfalcon', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 1, 3);
 INSERT INTO Login VALUES (NULL, 'bhapip', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32', 1, 2);
+INSERT INTO Login VALUES (NULL, 'oborcher', '$2y$10$PlzaQHry32a6O4yol5NVY.Ik8RrUlzbiNEzutSR4zNUmYuWPD/T32',0,1);
 
 insert into Medication_Type Values(1,'Antihypertensive');
 insert into Medication_Type Values(2,'Antihistamine');

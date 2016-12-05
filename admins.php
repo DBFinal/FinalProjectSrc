@@ -2,7 +2,7 @@
 
 require("common_funcs.php");
 
-$cursor = new page_header("Cloud9 Pharma");
+$cursor = new page_header("Cloud9 Pharmacy");
 $cursor->add_stylesheet("style_index.css");
 $cursor->add_stylesheet("https://fonts.googleapis.com/css?family=Poiret+One");
 $cursor->export();
@@ -18,10 +18,10 @@ function decisions()
 	echo "<div class=\"container\">\r\n";
 	echo "<div class=\"row\">\r\n";
 	echo "<div class=\"col-sm-6\">\r\n";
-	echo "<a href=\"user_maker.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Create New User</a>\r\n";
+	echo "<a href=\"createStaff.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Create Staff</a>\r\n";
 	echo "</div>\r\n";
 	echo "<div class=\"col-sm-6\">\r\n";
-	echo "<a href=\"editStaff.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Edit Staff</a>\r\n";
+	echo "<a href=\"deleteStaff.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Delete Staff</a>\r\n";
 	echo "</div>\r\n";
 	echo "</div>\r\n";
 	echo "<br />";
@@ -35,7 +35,7 @@ function decisions()
 
 decisions();
 
-$cursor = new page_footer("Cloud 9 Pharma");
+$cursor = new page_footer("Cloud9 Pharmacy");
 $cursor->export();
 
 ?>

@@ -2,7 +2,7 @@
 
 require("common_funcs.php");
 
-$cursor = new page_header("Cloud9 Pharma");
+$cursor = new page_header("Cloud9 Pharmacy");
 $cursor->add_stylesheet("style_index.css");
 $cursor->add_stylesheet("https://fonts.googleapis.com/css?family=Poiret+One");
 $cursor->export();
@@ -30,7 +30,7 @@ enjoy what we have to offer! If you have any questions or concerns, please do no
 
 <?php
 
-$cursor = new page_footer("Cloud 9 Pharma");
+$cursor = new page_footer("Cloud9 Pharmacy");
 $cursor->export();
 
 ?>
