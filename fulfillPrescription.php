@@ -13,7 +13,7 @@ $cursor->export();
 standard_nav();
 
 echo "<div class=\"container\">\r\n";
-echo "<h1>Prescription</h1>\r\n";
+echo "<h1>Fulfill Prescription:</h1>\r\n";
 
 $mysqli = new mysqli($db_ip,$db_user,$db_pass,$db_base);
 if ($mysqli->connect_errno) {exit("Cannot connect to MySQL!");}
@@ -99,15 +99,15 @@ if (isset($_POST["fulfill"]) && isset($_SESSION["prescript"]))
 echo "<div class=\"well\">\r\n";
 echo "<form class=\"form-horizontal\" method=\"POST\" action=\"fulfillPrescription.php\">\r\n";
 echo "<div class=\"form-group\">\r\n";
-echo "<label class=\"control-label col-sm-3\" for=\"customerid\">Customer ID:</label>\r\n";
+echo "<label class=\"control-label col-sm-3\" for=\"customerid\">Customer:</label>\r\n";
 echo "<div class=\"col-sm-9\">\r\n";
 //echo "<input type=\"number\" class=\"form-control\" id=\"customerid\" name=\"customerid\" required />\r\n";
 
 
 $cursor = new drop_down_menu("customerid");
 
-$sql = "SELECT prescriptions.custID as id,
-		CONCAT(prescriptions.prescripID,' - ',customers.firstName,' ',customers.lastname) AS name
+$sql = "SELECT prescriptions.custID AS id,
+		CONCAT(prescriptions.prescripId,' - ',customers.firstName,' ',customers.lastname) AS name
 		FROM prescriptions
 		INNER JOIN customers ON customers.custId = prescriptions.custId
 		WHERE empId IS NULL";
@@ -120,6 +120,8 @@ if ($res != false && $res->num_rows > 0)
 	{
 		$cursor->add_item($res_set["name"], $res_set["id"]);
 	}
+	
+	$res->free();
 }
 else
 {
@@ -127,6 +129,18 @@ else
 }
 
 $cursor->export();
+
+$sql = "SELECT COUNT(prescripId) AS amt FROM prescriptions WHERE empId IS NULL";
+$res = $mysqli->query($sql);
+
+if ($res != false)
+{
+	$res_set = $res->fetch_assoc();
+	echo "There are " . $res_set["amt"] . " unfilled prescription(s)!<br />\r\n";
+	$res->free();
+}
+
+
 
 echo "</div>\r\n</div>\r\n";
 echo "<div class=\"form-group\">\r\n";

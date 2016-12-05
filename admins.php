@@ -27,7 +27,10 @@ function decisions()
 	echo "<br />";
 	echo "<div class=\"row\">\r\n";
 	echo "<div class=\"col-sm-6\">\r\n";
-	echo "<a href=\"#.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Edit Customer</a>\r\n";
+	echo "<a href=\"editCustomer.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Edit Customer</a>\r\n";
+	echo "</div>\r\n";
+	echo "<div class=\"col-sm-6\">\r\n";
+	echo "<a href=\"showCustomers.php\" type=\"button\" class=\"btn btn-lg btn-primary btn-block\" role=\"button\">Show Customer Data</a>\r\n";
 	echo "</div>\r\n";
 	echo "</div>\r\n";
 	echo "</div>\r\n";

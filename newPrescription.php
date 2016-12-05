@@ -13,7 +13,7 @@ $cursor->export();
 standard_nav();
 
 echo "<div class=\"container\">\r\n";
-echo "<h1>Prescription</h1>\r\n";
+echo "<h1>New Prescription:</h1>\r\n";
 
 $mysqli = new mysqli($db_ip,$db_user,$db_pass,$db_base);
 if ($mysqli->connect_errno) {exit("Cannot connect to MySQL!");}

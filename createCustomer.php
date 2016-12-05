@@ -13,7 +13,7 @@ $cursor->export();
 standard_nav();
 
 echo "<div class=\"container\">\r\n";
-echo "<h1>Add Customer:</h1>\r\n";
+echo "<h1>New Patient:</h1>\r\n";
 
 if (isset($_POST["submit"]))
 {

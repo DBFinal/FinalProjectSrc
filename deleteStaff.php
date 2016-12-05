@@ -34,7 +34,7 @@ if ($res != false)
 	
 	if ($res->num_rows > 0)
 	{
-		echo "<table class=\"table\">\r\n";
+		echo "<div class=\"table-responsive\">\r\n<table class=\"table\">\r\n";
 		echo "<tr><th>ID:</th><th>Employee:</th><th>Phone:</th><th>Email:</th><th>Address:</th><th>City, State, Zip:</th></tr>\r\n";
 		
 		while ($res_set = $res->fetch_assoc())
@@ -43,7 +43,7 @@ if ($res != false)
 			echo "<td>" . $res_set["e"] . "</td><td>" . $res_set["a"] . "</td><td>" . $res_set["city"] . "</td></tr>\r\n";
 		}
 		
-		echo "</table>\r\n";
+		echo "</table>\r\n</div>\r\n";
 		
 	}
 	else

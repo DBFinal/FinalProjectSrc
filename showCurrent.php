@@ -40,7 +40,7 @@ if (doctor_privilege())
 		
 		if ($res->num_rows > 0)
 		{
-			echo "<table class=\"table\">\r\n";
+			echo "<div class=\"table-responsive\"><table class=\"table\">\r\n";
 			echo "<tr><th>Customer:</th><th>Medication:</th><th>Reason:</th><th>Refills:</th><th>Pill Count:</th><th>Instructions:</th></tr>\r\n";
 			
 			while ($res_set = $res->fetch_assoc())
@@ -49,7 +49,7 @@ if (doctor_privilege())
 				echo "<td>" . $res_set["refills"] . "</td><td>" . $res_set["pillCount"] . "</td><td>" . $res_set["instructions"] . "</td></tr>\r\n";
 			}
 			
-			echo "</table>\r\n";
+			echo "</table>\r\n</div>\r\n";
 		}
 		else
 		{
