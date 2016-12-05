@@ -96,32 +96,48 @@ if (isset($_POST["fulfill"]) && isset($_SESSION["prescript"]))
 	unset($_SESSION["prescript"]);
 }
 
-$mysqli->close();
+echo "<div class=\"well\">\r\n";
+echo "<form class=\"form-horizontal\" method=\"POST\" action=\"fulfillPrescription.php\">\r\n";
+echo "<div class=\"form-group\">\r\n";
+echo "<label class=\"control-label col-sm-3\" for=\"customerid\">Customer ID:</label>\r\n";
+echo "<div class=\"col-sm-9\">\r\n";
+//echo "<input type=\"number\" class=\"form-control\" id=\"customerid\" name=\"customerid\" required />\r\n";
 
-?>
 
-<div class="well">
-<form class="form-horizontal" method="POST" action="fulfillPrescription.php">
-<div class="form-group">
-<label class="control-label col-sm-3" for="customerid">Customer ID:</label>
-<div class="col-sm-9">
-<input type="number" class="form-control" id="customerid" name="customerid" required />
-</div>
-</div>
-<div class="form-group">
-<label class="control-label col-sm-3" for="submit">&nbsp;</label>
-<div class="col-sm-9">
-<button type="submit" id="submit" name="submit" class="btn btn-primary">Search</button>
-</div>
-</div>
-</form>
-</div>
+$cursor = new drop_down_menu("customerid");
 
-<?php
+$sql = "SELECT prescriptions.custID as id,
+		CONCAT(prescriptions.prescripID,' - ',customers.firstName,' ',customers.lastname) AS name
+		FROM prescriptions
+		INNER JOIN customers ON customers.custId = prescriptions.custId
+		WHERE empId IS NULL";
+		
+$res = $mysqli->query($sql);
 
-echo "</div>\r\n";
+if ($res != false && $res->num_rows > 0)
+{
+	while ($res_set = $res->fetch_assoc())
+	{
+		$cursor->add_item($res_set["name"], $res_set["id"]);
+	}
+}
+else
+{
+	$cursor->add_item("No prescriptions available!","-1");
+}
+
+$cursor->export();
+
+echo "</div>\r\n</div>\r\n";
+echo "<div class=\"form-group\">\r\n";
+echo "<label class=\"control-label col-sm-3\" for=\"submit\">&nbsp;</label>\r\n";
+echo "<div class=\"col-sm-9\">\r\n";
+echo "<button type=\"submit\" id=\"submit\" name=\"submit\" class=\"btn btn-primary\">Search</button>\r\n";
+echo "</div>\r\n</div>\r\n</form>\r\n</div>\r\n</div>\r\n";
 
 $cursor = new page_footer("Cloud9 Pharmacy");
 $cursor->export();
+
+$mysqli->close();
 
 ?>
